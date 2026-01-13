@@ -3,105 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makiroll Líbano - Menú Visual</title>
+    <title>Makiroll Líbano - Menú Oficial</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; margin: 0; }
-        .maki-red { color: #FF0000; }
         .maki-green { color: #39FF14; }
+        .maki-red { color: #FF0000; }
         .main-bg { background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); }
         
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=1800&auto=format&fit=crop');
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://i.ibb.co/xqRdKZdg/sushi-bg.jpg'); /* Imagen de fondo sutil */
             background-size: cover; background-position: center;
         }
 
         .category-card {
             background: rgba(15, 15, 15, 0.95);
             border: 1px solid #222; border-radius: 15px;
-            margin-bottom: 1.5rem; overflow: hidden; backdrop-filter: blur(10px);
+            margin-bottom: 1.2rem; overflow: hidden; backdrop-filter: blur(10px);
         }
 
         .accordion-content { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.5s ease-in-out; }
-        .active .accordion-content { max-height: 10000px; opacity: 1; padding: 15px; }
+        .active .accordion-content { max-height: 10000px; opacity: 1; padding: 10px; }
         .active .icon-plus { transform: rotate(45deg); color: #FF0000; }
 
-        .pdf-section-img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
+        .menu-img {
+            width: 100%; height: auto; border-radius: 8px;
+            display: block; margin-bottom: 10px;
             border: 1px solid #333;
-            display: block;
-            margin-bottom: 15px;
         }
 
-        .placeholder-box {
-            width: 100%;
-            height: 200px;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed #222;
-            color: #444;
-            font-style: italic;
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 10px;
-        }
+        .logo-img { width: 180px; height: auto; filter: drop-shadow(0 0 10px rgba(57, 255, 20, 0.3)); }
     </style>
 </head>
 <body class="main-bg">
 
-    <header class="hero h-64 flex flex-col items-center justify-center text-center px-4">
-        <div class="border-2 border-green-500 p-6 bg-black/60">
-            <h1 class="text-5xl font-black maki-green italic tracking-tighter">MAKIROLL</h1>
-            <p class="text-white tracking-[0.5em] text-xs font-bold opacity-90 uppercase">Líbano</p>
-        </div>
+    <header class="hero py-12 flex flex-col items-center justify-center text-center px-4">
+        <img src="https://i.ibb.co/GvN3bYbN/logo.png" alt="Makiroll Logo" class="logo-img mb-4">
+        <div class="h-1 w-20 bg-green-500 mb-2"></div>
+        <p class="text-white tracking-[0.4em] text-xs font-bold uppercase">Menú Interactivo</p>
     </header>
 
-    <div class="max-w-2xl mx-auto px-4 py-10" id="menu-container">
+    <div class="max-w-2xl mx-auto px-4 py-8" id="menu-container">
         </div>
 
-    <footer class="text-center py-16 bg-black">
-        <p class="maki-green font-bold italic text-xl mb-1">MAKIROLL LÍBANO</p>
-        <p class="text-gray-500 text-[10px] tracking-widest uppercase">Cra 6a#2-20 Jaramillo</p>
+    <div class="h-40 bg-cover bg-center border-y border-green-500 my-6 flex items-center justify-center" 
+         style="background-image: url('https://i.ibb.co/kgBx0ZNF/sushi-mid.jpg');">
+         <div class="bg-black/60 w-full h-full flex items-center justify-center">
+            <span class="maki-green italic font-black uppercase tracking-widest text-lg">Sabor que Enamora</span>
+         </div>
+    </div>
+
+    <footer class="text-center py-12 bg-black border-t border-zinc-900">
+        <p class="text-gray-500 text-[10px] tracking-widest uppercase">Cra 6a#2-20 Jaramillo • Líbano</p>
+        <p class="maki-green text-xs mt-2 italic font-bold">Makiroll © 2026</p>
     </footer>
 
     <script>
-        // Configuración de categorías finales
-        const categorias = [
-            { nombre: "🥢 ENTRADAS", id: "entradas", doble: false },
-            { nombre: "🍣 SUSHI", id: "sushi", doble: true }, 
-            { nombre: "🍜 RAMEN", id: "ramen", doble: false },
-            { nombre: "🍝 PASTAS", id: "pastas", doble: false },
-            { nombre: "🥗 BOWLS Y ARROCES", id: "bowls", doble: false },
-            { nombre: "🌊 DELICIAS DEL MAR", id: "mar", doble: false },
-            { nombre: "🥩 PLATOS CRIOLLOS", id: "criollo", doble: false },
-            { nombre: "🥤 BEBIDAS", id: "bebidas", doble: false }
+        // Mapeo de tus imágenes subidas
+        const menuData = [
+            { nombre: "🥢 ENTRADAS", imgs: ["https://i.ibb.co/5gSC3tc8/1.jpg"] },
+            { nombre: "🍣 SUSHI", imgs: ["https://i.ibb.co/xqRdKZdg/2.jpg", "https://i.ibb.co/kgBx0ZNF/3.jpg"] },
+            { nombre: "🍜 RAMEN", imgs: ["https://i.ibb.co/mVkCLZwF/4.jpg"] },
+            { nombre: "🍝 PASTAS", imgs: ["https://i.ibb.co/Rp5gK4Rh/5.jpg"] },
+            { nombre: "🥗 BOWLS Y ARROCES", imgs: ["https://i.ibb.co/KjPzyDC9/6.jpg"] },
+            { nombre: "🌊 DELICIAS DEL MAR", imgs: ["https://i.ibb.co/XrkzwWQM/7.jpg"] },
+            { nombre: "🥩 PLATOS CRIOLLOS", imgs: ["https://i.ibb.co/6RWmfxSM/8.jpg"] },
+            { nombre: "🥤 BEBIDAS", imgs: ["https://i.ibb.co/DDLfBv40/9.jpg"] },
+            { nombre: "➕ ADICIONALES", imgs: ["https://i.ibb.co/6JZY3LYv/adicionales.jpg"] }
         ];
 
         const container = document.getElementById('menu-container');
 
-        categorias.forEach(cat => {
+        menuData.forEach(cat => {
             const card = document.createElement('div');
             card.className = "category-card";
             
-            let contenidoInterno = `<div class="placeholder-box">Imagen de ${cat.nombre} (Página 1)</div>`;
-            if (cat.doble) {
-                contenidoInterno += `<div class="placeholder-box">Imagen de ${cat.nombre} (Página 2)</div>`;
-            }
+            const imagenesHtml = cat.imgs.map(url => `<img src="${url}" class="menu-img" loading="lazy">`).join('');
 
             card.innerHTML = `
-                <div class="p-6 flex justify-between items-center cursor-pointer active:bg-zinc-900" onclick="this.parentElement.classList.toggle('active')">
-                    <h2 class="text-xl font-black maki-green tracking-tighter italic uppercase">${cat.nombre}</h2>
-                    <span class="icon-plus text-2xl maki-red font-bold transition-transform">+</span>
+                <div class="p-5 flex justify-between items-center cursor-pointer active:bg-zinc-900" onclick="this.parentElement.classList.toggle('active')">
+                    <h2 class="text-lg font-black maki-green tracking-tighter italic uppercase">${cat.nombre}</h2>
+                    <span class="icon-plus text-xl maki-red font-bold transition-transform">+</span>
                 </div>
                 <div class="accordion-content">
-                    <div id="container-${cat.id}">
-                        ${contenidoInterno}
-                    </div>
+                    ${imagenesHtml}
                 </div>
             `;
             container.appendChild(card);
