@@ -33,7 +33,7 @@
             border-radius: 8px;
             border: 1px solid #333;
             display: block;
-            margin-bottom: 15px; /* Espacio entre las dos fotos si las hay */
+            margin-bottom: 15px;
         }
 
         .placeholder-box {
@@ -70,12 +70,12 @@
     </footer>
 
     <script>
-        // Configuración de categorías
-        // La propiedad 'doble' indica si necesita espacio para 2 imágenes (como el Sushi)
+        // Configuración de categorías finales
         const categorias = [
             { nombre: "🥢 ENTRADAS", id: "entradas", doble: false },
             { nombre: "🍣 SUSHI", id: "sushi", doble: true }, 
-            { nombre: "🍜 RAMEN Y PASTAS", id: "pastas", doble: false },
+            { nombre: "🍜 RAMEN", id: "ramen", doble: false },
+            { nombre: "🍝 PASTAS", id: "pastas", doble: false },
             { nombre: "🥗 BOWLS Y ARROCES", id: "bowls", doble: false },
             { nombre: "🌊 DELICIAS DEL MAR", id: "mar", doble: false },
             { nombre: "🥩 PLATOS CRIOLLOS", id: "criollo", doble: false },
@@ -88,7 +88,6 @@
             const card = document.createElement('div');
             card.className = "category-card";
             
-            // Creamos los cuadros de placeholder dependiendo de si es doble o no
             let contenidoInterno = `<div class="placeholder-box">Imagen de ${cat.nombre} (Página 1)</div>`;
             if (cat.doble) {
                 contenidoInterno += `<div class="placeholder-box">Imagen de ${cat.nombre} (Página 2)</div>`;
