@@ -3,144 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makiroll Líbano - Menú Experiencia</title>
+    <title>Makiroll Líbano - Menú Oficial 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Estilo General */
         body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; margin: 0; }
-        
-        /* Imagen de fondo principal (Hero) */
-        .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=2070&auto=format&fit=crop'); /* Puedes cambiar este link por una foto de tu local */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        /* Imagen de fondo para las secciones */
-        .section-bg {
-            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); /* Textura sutil de fondo */
-        }
-
         .maki-red { color: #FF0000; }
         .maki-green { color: #39FF14; }
         
-        /* Acordeón Estilizado */
-        .accordion-item {
-            background: rgba(15, 15, 15, 0.95);
-            backdrop-filter: blur(10px);
+        /* Fondo con textura de fibra de carbono para toda la página */
+        .main-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            background-attachment: fixed;
+        }
+
+        /* Banner Principal */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), 
+                        url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=1800&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+        }
+
+        /* Acordeones Estilizados */
+        .category-card {
+            background: rgba(20, 20, 20, 0.9);
             border: 1px solid #222;
             border-radius: 15px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             overflow: hidden;
+            backdrop-filter: blur(5px);
         }
 
         .accordion-content { 
-            max-height: 0; 
-            transition: all 0.5s cubic-bezier(0,1,0,1); 
-            opacity: 0;
-        }
-        
-        .active .accordion-content { 
-            max-height: 10000px; 
-            opacity: 1; 
+            max-height: 0; opacity: 0; overflow: hidden;
             transition: all 0.5s ease-in-out;
-            padding: 20px;
         }
-
-        /* Espacio para imagen del producto */
-        .product-img {
-            width: 100%;
-            height: 180px;
-            background: #1a1a1a;
-            border-radius: 10px;
-            object-fit: cover;
-            margin-bottom: 10px;
-            border: 1px solid #333;
+        .active .accordion-content { 
+            max-height: 15000px; opacity: 1; padding: 20px;
         }
-
-        .icon-plus { transition: transform 0.3s; }
         .active .icon-plus { transform: rotate(45deg); color: #FF0000; }
+
+        /* Espacios para imágenes de productos */
+        .product-img-box {
+            width: 100%; height: 220px;
+            background: #111; border-radius: 12px;
+            border: 1px solid #333; margin-bottom: 12px;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .product-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Separadores visuales decorativos */
+        .divider-img {
+            height: 150px; background-attachment: fixed; background-position: center; background-size: cover;
+            border-top: 2px solid #39FF14; border-bottom: 2px solid #39FF14;
+            display: flex; align-items: center; justify-content: center;
+        }
     </style>
 </head>
-<body class="section-bg">
+<body class="main-bg">
 
-    <div class="hero-bg h-80 flex flex-col items-center justify-center text-center px-4 mb-8">
-        <div class="border-4 border-green-500 p-4 bg-black/50 backdrop-blur-sm">
-            <h1 class="text-5xl font-black maki-green italic italic tracking-tighter">MAKIROLL</h1>
-            <p class="text-white tracking-[0.5em] text-sm font-bold">LÍBANO</p>
+    <header class="hero h-96 flex flex-col items-center justify-center text-center px-4 relative">
+        <div class="border-2 border-green-500 p-6 bg-black/40">
+            <h1 class="text-6xl font-black maki-green italic tracking-tighter italic">MAKIROLL</h1>
+            <p class="text-white tracking-[0.6em] text-sm font-bold opacity-80 uppercase">Líbano</p>
         </div>
-        <p class="mt-4 text-white text-xs uppercase tracking-widest bg-red-600 px-2 py-1">Cra 6a#2-20 jaramillo</p>
-    </div>
+        <p class="absolute bottom-4 text-gray-400 text-[10px] tracking-widest uppercase">Cra 6a#2-20 jaramillo</p>
+    </header>
 
-    <div class="max-w-xl mx-auto px-4 pb-24" id="menu-container">
+    <div class="max-w-2xl mx-auto px-4 py-10" id="menu-container">
         </div>
 
-    <div class="h-40 my-10 bg-fixed bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1925&auto=format&fit=crop'); border-y: 2px solid #39FF14;">
-        <div class="h-full w-full bg-black/40 flex items-center justify-center text-2xl font-black italic maki-green italic uppercase tracking-widest">
-            Sabor que Enamora
-        </div>
-    </div>
+    <footer class="text-center py-20 border-t border-zinc-900 bg-black/80">
+        <p class="maki-green font-bold italic text-xl mb-2">MAKIROLL LÍBANO</p>
+        <p class="text-gray-500 text-xs tracking-widest uppercase">Domicilios: $2.000</p>
+    </footer>
 
     <script>
-        const menuData = {
-            "categorias": [
-                {
-                    "nombre": "🥢 ENTRADAS",
-                    "productos": [
-                        {"n": "AROS DE CEBOLLA Y CALAMAR", "p": "15.000", "d": "Crujientes aros acompañados de salsa.", "img": ""},
-                        {"n": "KANIS CROCANTES", "p": "20.000", "d": "Palmitos de cangrejo apanados.", "img": ""}
-                    ]
-                },
-                {
-                    "nombre": "🍣 SUSHI ESPECIAL",
-                    "productos": [
-                        {"n": "ACEVICHADO", "p": "35.000", "d": "Langostino tempura y aguacate con tope ceviche de camaron.", "img": ""},
-                        {"n": "FENIX ROLL", "p": "34.000", "d": "Sin arroz. Salmón, atún, kanikama especial y wuakame.", "img": ""}
-                    ]
-                },
-                {
-                    "nombre": "🍜 RAMEN Y PASTAS",
-                    "productos": [
-                        {"n": "DRAMMEN", "p": "35.000", "d": "Consome japones, pasta ramen, panceta de cerdo y huevo macerado.", "img": ""},
-                        {"n": "PASTA DEL MAR", "p": "39.000", "d": "Mariscos salteados en salsa bechamel con patacones.", "img": ""}
-                    ]
-                },
-                {
-                    "nombre": "🍹 BEBIDAS",
-                    "productos": [
-                        {"n": "LIMONADAS", "p": "9.000", "d": "Hierbabuena, Cereza, Sandía o Maracumango.", "img": ""},
-                        {"n": "SODA ITALIANA", "p": "10.000", "d": "Frutos rojos.", "img": ""}
-                    ]
-                }
-            ]
-        };
+        const menuData = [
+            {
+                cat: "🥢 ENTRADAS",
+                items: [
+                    {n: "AROS DE CEBOLLA Y CALAMAR", p: "15.000", d: "Crujientes aros acompañados de salsa."},
+                    {n: "KANIS CROCANTES", p: "20.000", d: "Palmitos de cangrejo apanados."},
+                    {n: "NUGGETS DE POLLO", p: "10.000", d: "Porción de nuggets de pollo."},
+                    {n: "BANANA PANKO", p: "13.000", d: "Bocados de banano al panko."}
+                ]
+            },
+            {
+                cat: "🍣 SUSHI ESPECIAL",
+                items: [
+                    {n: "DINAMITA", p: "24.000", d: "Kanikama especial y aguacate con tope de ajonjoli."},
+                    {n: "CALIFORNIA", p: "24.000", d: "Kanikama, pepino, aguacate y ajonjoli mix."},
+                    {n: "ALASKA SKIN", p: "26.000", d: "Piel de salmón tempura, aguacate con tope de platano maduro y salsa mayonesa japonesa."},
+                    {n: "PHILADELPHIA", p: "28.000", d: "Salmón fresco, queso crema y aguacate."},
+                    {n: "EBI ESPECIAL", p: "36.000", d: "Langostino tempura, cebolla larga caramelizada, aguacate y langostino tempura en salsa Fuji."},
+                    {n: "OJO DE TIGRE", p: "36.000", d: "Salmon, atún, palmito de cangrejo, aguacate y queso crema con tope de salsa dinamita."},
+                    {n: "EBI CROCANTE", p: "35.000", d: "Roll apanado relleno de palmito de cangrejo, queso crema y aguacate con tope de camaron tempura."},
+                    {n: "ACEVICHADO", p: "35.000", d: "Langostino tempura y aguacate con tope ceviche de camaron."},
+                    {n: "FENIX ROLL (SIN ARROZ)", p: "34.000", d: "Salmón, atún, kanikama especial, aguacate con tope de wuakame y ajonjoli."},
+                    {n: "MAKI HOUSE ROLL", p: "35.000", d: "Langostino tempura, pepino, queso crema con tope de platano maduro y salsa mayonesa japonesa."}
+                ]
+            },
+            {
+                cat: "🍜 RAMEN Y PASTAS",
+                items: [
+                    {n: "DRAMMEN (RAMEN)", p: "35.000", d: "Consomé japones, pasta ramen, panceta de cerdo, pollo, alga nori y huevo macerado."},
+                    {n: "PASTA ORIENTAL (POLLO/CERDO)", p: "27.000", d: "Pasta de arroz, vegetales salteados, salsa soya y teriyaki."},
+                    {n: "PASTA ORIENTAL (CAMARÓN)", p: "35.000", d: "Pasta de arroz con camarones seleccionados y vegetales."},
+                    {n: "PASTA DEL MAR", p: "39.000", d: "Mariscos salteados en salsa bechamel acompañados de patacones."}
+                ]
+            },
+            {
+                cat: "🥗 BOWLS Y ARROCES",
+                items: [
+                    {n: "BOWL TROPICAL", p: "18.000", d: "Base arroz, pollo, cerdo, tomate, pepino, zucchini y platanito maduro."},
+                    {n: "OCEAN BOWL", p: "25.000", d: "Base arroz, mix de mariscos, mango, aguacate, pico de gallo y patacón."},
+                    {n: "BOWL TORREÓN", p: "24.000", d: "Camarón acevichado, pepino, mango, aguacate y base de arroz."},
+                    {n: "BOWL VEGETARIANO", p: "17.000", d: "Mix de vegetales, frutas de temporada y semillas de sésamo."},
+                    {n: "ARROZ MARINERO", p: "40.000", d: "Arroz parvorizado con mariscos salteados y vegetales."},
+                    {n: "ARROZ DE LA CASA", p: "25.000", d: "Arroz con pollo, cerdo, vegetales y salsa de la casa."}
+                ]
+            },
+            {
+                cat: "🌊 DELICIAS DEL MAR",
+                items: [
+                    {n: "CAZUELA MARINERA", p: "40.000", d: "Delicias del mar con arroz de la casa y estrellas de plátano."},
+                    {n: "COCTEL DE CAMARÓN", p: "26.000", d: "Torre de camarones en salsa especial, palmitos y pico de gallo."},
+                    {n: "SIERRA EN SALSA CRIOLLA", p: "50.000", d: "Sierra fresca acompañada de papa deluxe y arroz."}
+                ]
+            },
+            {
+                cat: "🥩 PLATOS CRIOLLOS",
+                items: [
+                    {n: "CHURRASCO", p: "34.000", d: "Lomo de res, papa a la francesa y ensalada mix."},
+                    {n: "PECHUGA CHAMPIÑONES", p: "35.000", d: "Acompañada de arroz de la casa y papa francesa."},
+                    {n: "COSTILLAS BBQ", p: "30.000", d: "Costillas salteadas en salsa BBQ, papas y ensalada."},
+                    {n: "TRUCHA AL AJILLO", p: "36.000", d: "Acompañada de patacón y arroz de la casa."},
+                    {n: "MOJARRA FRITA", p: "32.000", d: "Acompañada de patacón y arroz."},
+                    {n: "BAGRE EN COCO", p: "36.000", d: "Bagre en leche de coco o salsa criolla con papa deluxe."}
+                ]
+            },
+            {
+                cat: "🥤 BEBIDAS",
+                items: [
+                    {n: "LIMONADAS ESPECIALES", p: "9.000", d: "Hierbabuena, Cereza, Sandía o Maracumango."},
+                    {n: "LIMONADA DE COCO", p: "10.000", d: "Cremosa y refrescante."},
+                    {n: "SODA ITALIANA", p: "10.000", d: "Frutos rojos."},
+                    {n: "CERVEZA CORONA", p: "7.000", d: "Botella fría."},
+                    {n: "MARGARITA / MOJITO", p: "15.000", d: "Coctelería clásica."}
+                ]
+            }
+        ];
 
         const container = document.getElementById('menu-container');
         
-        menuData.categorias.forEach(cat => {
-            const item = document.createElement('div');
-            item.className = "accordion-item";
-            item.innerHTML = `
-                <div class="p-6 flex justify-between items-center cursor-pointer border-b border-zinc-800" onclick="this.parentElement.classList.toggle('active')">
-                    <h2 class="text-xl font-black maki-green tracking-tight italic uppercase">${cat.nombre}</h2>
-                    <span class="icon-plus text-2xl maki-red font-bold">+</span>
+        menuData.forEach((section, idx) => {
+            // Cada 3 categorías, insertamos una imagen decorativa de fondo (Parallax)
+            if(idx === 3) {
+                const imgDiv = document.createElement('div');
+                imgDiv.className = "divider-img my-8";
+                imgDiv.style.backgroundImage = "url('https://images.unsplash.com/photo-1617196034183-421b4917c92d?q=80&w=2070&auto=format&fit=crop')";
+                imgDiv.innerHTML = `<span class="bg-black/60 px-4 py-2 maki-green italic font-black uppercase tracking-widest">Sabor Oriental</span>`;
+                container.appendChild(imgDiv);
+            }
+
+            const card = document.createElement('div');
+            card.className = "category-card";
+            card.innerHTML = `
+                <div class="p-6 flex justify-between items-center cursor-pointer active:bg-zinc-900" onclick="this.parentElement.classList.toggle('active')">
+                    <h2 class="text-xl font-black maki-green tracking-tighter italic uppercase">${section.cat}</h2>
+                    <span class="icon-plus text-2xl maki-red font-bold transition-transform duration-300">+</span>
                 </div>
                 <div class="accordion-content">
-                    ${cat.productos.map(p => `
-                        <div class="mb-10 last:mb-0">
-                            <img src="${p.img || 'https://via.placeholder.com/500x300?text=MAKIROLL+FOTO'}" class="product-img shadow-lg shadow-green-500/10">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-lg font-bold text-white uppercase italic tracking-tighter">${p.n}</h3>
+                    ${section.items.map(p => `
+                        <div class="mb-12 last:mb-0 border-b border-zinc-900 pb-8 last:border-0">
+                            <div class="product-img-box">
+                                <span class="text-zinc-800 text-3xl font-black italic opacity-20 tracking-tighter">FOTO ${p.n}</span>
+                            </div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-lg font-bold text-white uppercase italic tracking-tighter leading-tight w-2/3">${p.n}</h3>
                                 <span class="maki-green font-black text-lg">$${p.p}</span>
                             </div>
-                            <p class="text-zinc-400 text-xs leading-relaxed">${p.d}</p>
+                            <p class="text-zinc-500 text-sm leading-relaxed">${p.d}</p>
                         </div>
                     `).join('')}
                 </div>
             `;
-            container.appendChild(item);
+            container.appendChild(card);
         });
     </script>
 </body>
