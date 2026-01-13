@@ -3,32 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makiroll Líbano - Menú</title>
+    <title>Makiroll Líbano - Menú Interactivo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #000; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; }
         .maki-red { color: #FF0000; }
         .maki-green { color: #39FF14; }
-        .bg-card { background-color: #0a0a0a; }
-        .accordion-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-in-out; opacity: 0; }
-        .active .accordion-content { max-height: 5000px; opacity: 1; padding: 20px 0; }
+        .bg-card { background-color: #0a0a0a; border: 1px solid #1a1a1a; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; }
+        .active .accordion-content { max-height: 5000px; opacity: 1; padding-bottom: 20px; }
         .active .icon-plus { transform: rotate(45deg); color: #FF0000; }
+        .category-header { border-left: 4px solid #39FF14; transition: all 0.3s; }
+        .active .category-header { border-left: 4px solid #FF0000; background: #111; }
     </style>
 </head>
-<body>
-    <div class="max-w-md mx-auto min-h-screen pb-20">
-        <header class="text-center py-10 border-b border-red-600 bg-black sticky top-0 z-50">
-            <h1 class="text-5xl font-black maki-green italic tracking-tighter">MAKIROLL</h1>
-            <p class="text-white tracking-[0.3em] text-xs font-bold mb-2">LÍBANO</p>
-            <p class="text-[10px] text-gray-400">Cra 6a#2-20 jaramillo</p>
+<body class="bg-black">
+    <div class="max-w-2xl mx-auto pb-20">
+        <header class="text-center pt-16 pb-12 px-4">
+            <h1 class="text-6xl font-black maki-green italic tracking-tighter mb-1">MAKIROLL</h1>
+            <p class="text-white tracking-[0.5em] text-sm font-bold opacity-80">LÍBANO</p>
+            <div class="w-16 h-1 bg-red-600 mx-auto mt-6"></div>
+            <p class="mt-6 text-gray-400 text-xs uppercase tracking-widest">Cra 6a#2-20 jaramillo</p>
         </header>
 
-        <div id="menu-container" class="px-4 mt-6 space-y-3">
+        <div id="menu-container" class="px-4 space-y-6">
             </div>
 
-        <footer class="text-center py-10 text-gray-600 text-[10px] uppercase tracking-widest">
+        <footer class="text-center py-16 text-gray-600 text-[10px] uppercase tracking-[0.3em] border-t border-gray-900 mt-10">
             <p>Domicilios: $2.000</p>
-            <p class="mt-2">© 2026 Makiroll Líbano</p>
+            <p class="mt-4">Makiroll Líbano © 2026</p>
         </footer>
     </div>
 
@@ -36,54 +39,62 @@
         const menuData = {
             "categorias": [
                 {
-                    "nombre": "ENTRADAS",
+                    "nombre": "Entradas",
                     "productos": [
-                        {"n": "AROS DE CEBOLLA Y CALAMAR", "p": "15.000", "d": "Crujientes aros acompañados de salsa."},
-                        {"n": "KANIS CROCANTES", "p": "20.000", "d": "Palmitos de cangrejo apanados."},
-                        {"n": "NUGGETS DE POLLO", "p": "10.000", "d": "Porción de nuggets crocantes."},
-                        {"n": "BANANA PANKO", "p": "13.000", "d": "Bocados de banano al panko."}
+                        {"n": "Aros de Cebolla y Calamar", "p": "15.000", "d": "Crujientes aros acompañados de salsa."},
+                        {"n": "Kanis Crocantes", "p": "20.000", "d": "Palmitos de cangrejo apanados."},
+                        {"n": "Nuggets de Pollo", "p": "10.000", "d": "Porción de nuggets crocantes."},
+                        {"n": "Banana Panko", "p": "13.000", "d": "Bocados de banano al panko."}
                     ]
                 },
                 {
-                    "nombre": "SUSHI ROLLS",
+                    "nombre": "Sushi Rolls",
                     "productos": [
-                        {"n": "ACEVICHADO", "p": "35.000", "d": "Langostino tempura, aguacate y ceviche de camaron."},
-                        {"n": "FENIX ROLL", "p": "34.000", "d": "Sin arroz. Salmón, atún, kanikama y wuakame."},
-                        {"n": "OJO DE TIGRE", "p": "36.000", "d": "Salmón, atún, palmito, aguacate y queso crema."},
-                        {"n": "PHILADELPHIA", "p": "28.000", "d": "Salmón fresco, queso crema y aguacate."},
-                        {"n": "DINAMITA", "p": "24.000", "d": "Kanikama especial y aguacate."}
+                        {"n": "Acevichado", "p": "35.000", "d": "Langostino tempura, aguacate y tope ceviche de camarón."},
+                        {"n": "Fenix Roll (Sin Arroz)", "p": "34.000", "d": "Salmón, atún, kanikama especial, aguacate y wuakame."},
+                        {"n": "Ojo de Tigre", "p": "36.000", "d": "Salmón, atún, palmito, aguacate y queso crema."},
+                        {"n": "Ebi Especial", "p": "36.000", "d": "Langostino tempura, cebolla caramelizada y salsa Fuji."},
+                        {"n": "Dinamita", "p": "24.000", "d": "Kanikama especial, aguacate y ajonjolí."}
                     ]
                 },
                 {
-                    "nombre": "PASTAS Y RAMEN",
+                    "nombre": "Pastas y Ramen",
                     "productos": [
-                        {"n": "DRAMMEN (RAMEN)", "p": "35.000", "d": "Consomé japonés, panceta, pollo y huevo macerado."},
-                        {"n": "PASTA ORIENTAL POLLO", "p": "27.000", "d": "Pasta de arroz, vegetales, soya y teriyaki."},
-                        {"n": "PASTA DEL MAR", "p": "39.000", "d": "Mariscos salteados en salsa bechamel."}
+                        {"n": "Drammen (Ramen)", "p": "35.000", "d": "Consomé japonés, panceta, pollo y huevo macerado."},
+                        {"n": "Pasta Oriental Pollo/Cerdo", "p": "27.000", "d": "Pasta de arroz, vegetales, soya y teriyaki."},
+                        {"n": "Pasta del Mar", "p": "39.000", "d": "Mariscos salteados en salsa bechamel con patacones."}
                     ]
                 },
                 {
-                    "nombre": "BOWLS",
+                    "nombre": "Bowls y Arroces",
                     "productos": [
-                        {"n": "BOWL TROPICAL", "p": "18.000", "d": "Base arroz, pollo, cerdo, vegetales y maduro."},
-                        {"n": "OCEAN BOWL", "p": "25.000", "d": "Mix mariscos, mango, aguacate y patacón."},
-                        {"n": "BOWL VEGETARIANO", "p": "17.000", "d": "Mix de vegetales, fruta y semillas sésamo."}
+                        {"n": "Ocean Bowl", "p": "25.000", "d": "Mix de mariscos, mango, aguacate y patacón."},
+                        {"n": "Bowl Torreón", "p": "24.000", "d": "Camarón acevichado, pepino, mango y aguacate."},
+                        {"n": "Arroz Marinero", "p": "40.000", "d": "Arroz parvorizado con mariscos salteados."}
                     ]
                 },
                 {
-                    "nombre": "DELICIAS DEL MAR",
+                    "nombre": "Delicias del Mar",
                     "productos": [
-                        {"n": "CAZUELA MARINERA", "p": "40.000", "d": "Mix de mariscos, arroz de la casa y patacón."},
-                        {"n": "COCTEL CAMARÓN", "p": "26.000", "d": "Torre de camarones en salsa de la casa."},
-                        {"n": "SIERRA", "p": "50.000", "d": "En salsa criolla con papa deluxe y arroz."}
+                        {"n": "Cazuela Marinera", "p": "40.000", "d": "Delicias del mar con arroz de la casa."},
+                        {"n": "Coctel de Camarón", "p": "26.000", "d": "Torre de camarones en salsa de la casa."},
+                        {"n": "Sierra en Salsa", "p": "50.000", "d": "Sierra en salsa criolla con papa deluxe."}
                     ]
                 },
                 {
-                    "nombre": "BEBIDAS",
+                    "nombre": "Platos Criollos",
                     "productos": [
-                        {"n": "LIMONADA COCO", "p": "10.000", "d": "Refrescante y cremosa."},
-                        {"n": "SODA ITALIANA", "p": "10.000", "d": "Frutos rojos."},
-                        {"n": "MARGARITA / MOJITO", "p": "15.000", "d": "Cocteles clásicos."}
+                        {"n": "Churrasco", "p": "34.000", "d": "Lomo de res, papa a la francesa y ensalada."},
+                        {"n": "Pechuga Champiñones", "p": "35.000", "d": "Arroz de la casa y papa francesa."},
+                        {"n": "Costillas BBQ", "p": "30.000", "d": "Costillas salteadas, papas y ensalada."}
+                    ]
+                },
+                {
+                    "nombre": "Bebidas",
+                    "productos": [
+                        {"n": "Limonadas Especiales", "p": "9.000", "d": "Hierbabuena, Cereza, Sandía o Maracumango."},
+                        {"n": "Soda Italiana", "p": "10.000", "d": "Frutos rojos."},
+                        {"n": "Cerveza Corona", "p": "7.000", "d": "Botella bien fría."}
                     ]
                 }
             ]
@@ -91,29 +102,29 @@
 
         const container = document.getElementById('menu-container');
         menuData.categorias.forEach(cat => {
-            const div = document.createElement('div');
-            div.className = "bg-card border border-gray-900 rounded-xl overflow-hidden shadow-2xl";
-            div.innerHTML = `
-                <div class="p-5 flex justify-between items-center cursor-pointer hover:bg-[#111] transition-colors" onclick="this.parentElement.classList.toggle('active')">
-                    <h2 class="text-lg font-bold tracking-tighter maki-green uppercase">${cat.nombre}</h2>
-                    <span class="icon-plus text-2xl maki-red transition-transform duration-300">+</span>
+            const section = document.createElement('div');
+            section.className = "bg-card rounded-lg overflow-hidden";
+            section.innerHTML = `
+                <div class="category-header p-6 flex justify-between items-center cursor-pointer" onclick="this.parentElement.classList.toggle('active')">
+                    <h2 class="text-xl font-black tracking-tight uppercase">${cat.nombre}</h2>
+                    <span class="icon-plus text-2xl maki-green transition-transform duration-300">+</span>
                 </div>
-                <div class="accordion-content px-5 border-t border-gray-900 bg-black">
+                <div class="accordion-content px-6 space-y-8">
                     ${cat.productos.map(p => `
-                        <div class="flex gap-4 py-4 border-b border-gray-900 last:border-0 items-center">
+                        <div class="flex gap-6 items-start">
                             <div class="flex-1">
-                                <h3 class="font-bold text-white text-md uppercase italic">${p.n}</h3>
-                                <p class="text-gray-500 text-xs leading-relaxed mt-1">${p.d}</p>
-                                <p class="maki-green font-black mt-2 text-sm">$${p.p}</p>
+                                <h3 class="font-bold text-lg text-white uppercase italic tracking-tighter mb-1">${p.n}</h3>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-3">${p.d}</p>
+                                <span class="maki-green font-black text-md">$${p.p}</span>
                             </div>
-                            <div class="w-16 h-16 bg-[#0a0a0a] border border-red-900/30 rounded-lg flex items-center justify-center text-[8px] text-gray-700 italic">
+                            <div class="w-24 h-24 bg-zinc-900 border border-zinc-800 rounded-lg flex items-center justify-center text-[10px] text-zinc-700 italic flex-shrink-0">
                                 FOTO
                             </div>
                         </div>
                     `).join('')}
                 </div>
             `;
-            container.appendChild(div);
+            container.appendChild(section);
         });
     </script>
 </body>
