@@ -7,116 +7,171 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; margin: 0; }
-        .maki-green { color: #39FF14; }
         .maki-red { color: #FF0000; }
-        
-        /* Fondo con textura sutil para evitar pixelación visual del fondo */
+        .maki-green { color: #39FF14; }
         .main-bg { background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); }
         
-        /* Encabezado con imagen de fondo original - Ajustada para no recortar logo */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
                         url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=1800&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-bottom: 2px solid #39FF14;
+            background-size: cover; background-position: center;
         }
 
-        /* Logo en alta calidad sin recortes */
-        .logo-img { 
-            width: 100%;
-            max-width: 250px; 
-            height: auto; 
-            object-fit: contain;
-            filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+        .divider-img {
+            height: 250px; 
+            background-image: url('https://images.unsplash.com/photo-1617196034183-421b4917c92d?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+            border-top: 3px solid #39FF14; border-bottom: 3px solid #39FF14;
+            display: flex; align-items: center; justify-content: center;
+            margin: 40px 0;
         }
 
         .category-card {
-            background: rgba(25, 25, 25, 1);
-            border: 1px solid #333;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
+            background: rgba(15, 15, 15, 0.95);
+            border: 1px solid #222; border-radius: 15px;
+            margin-bottom: 1.2rem; overflow: hidden; backdrop-filter: blur(10px);
         }
 
-        /* Acordeón que se ajusta al contenido real de la imagen */
-        .accordion-content { 
-            display: none;
-            width: 100%;
-            background: #000;
-        }
-        .active .accordion-content { 
-            display: block; 
-        }
-        
-        /* Imagen del menú: Calidad máxima y sin recortes */
-        .menu-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            image-rendering: -webkit-optimize-contrast; /* Mejora nitidez en móviles */
-        }
-
-        .icon-plus { transition: transform 0.3s ease; }
+        .accordion-content { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.5s ease-in-out; }
+        .active .accordion-content { max-height: 25000px; opacity: 1; padding: 20px; }
         .active .icon-plus { transform: rotate(45deg); color: #FF0000; }
+
+        .product-img-box {
+            width: 100%; height: 240px; background: #111; border-radius: 12px;
+            border: 1px solid #333; margin-bottom: 15px;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        .product-img-box img { width: 100%; height: 100%; object-fit: cover; }
     </style>
 </head>
 <body class="main-bg">
 
-    <header class="hero">
-        <img src="https://i.ibb.co/GvN3bYbN/logo.png" alt="Makiroll Logo" class="logo-img">
-        <div class="mt-4 border-t border-b border-green-500 py-1 px-6">
-            <p class="maki-green text-sm tracking-[0.5em] font-black uppercase">LÍBANO</p>
+    <header class="hero h-80 flex flex-col items-center justify-center text-center px-4">
+        <div class="border-2 border-green-500 p-6 bg-black/60">
+            <h1 class="text-6xl font-black maki-green italic italic tracking-tighter">MAKIROLL</h1>
+            <p class="text-white tracking-[0.6em] text-sm font-bold opacity-90 uppercase">Líbano</p>
         </div>
-        <p class="text-white text-[10px] mt-2 opacity-90 uppercase tracking-widest">Cra 6a#2-20 Jaramillo [cite: 108]</p>
     </header>
 
-    <div class="max-w-4xl mx-auto px-2 py-8" id="menu-container">
-        </div>
+    <div class="max-w-2xl mx-auto px-4 py-10" id="menu-container"></div>
 
-    <footer class="text-center py-10 bg-black border-t border-zinc-900">
-        <p class="text-zinc-500 text-[10px] uppercase tracking-[0.3em]">Domicilios: $2.000 [cite: 208]</p>
-        <p class="maki-green text-xs mt-3 font-bold italic">© 2026 MAKIROLL LÍBANO</p>
+    <footer class="text-center py-20 bg-black">
+        <p class="maki-green font-bold italic text-2xl mb-2 italic">MAKIROLL LÍBANO</p>
+        <p class="text-gray-500 text-xs tracking-widest uppercase">Cra 6a#2-20 Jaramillo</p>
+        <p class="text-gray-600 text-[10px] mt-4 uppercase tracking-[0.2em]">Domicilios: $2.000</p>
     </footer>
 
     <script>
-        // Enlaces corregidos a "Direct Link" para máxima calidad y evitar recortes
         const menuData = [
-            { nombre: "🥢 ENTRADAS", imgs: ["https://i.ibb.co/5gSC3tc8/1.jpg"] },
-            { nombre: "🍣 SUSHI ROLLS", imgs: ["https://i.ibb.co/xqRdKZdg/2.jpg", "https://i.ibb.co/kgBx0ZNF/3.jpg"] },
-            { nombre: "🍜 RAMEN", imgs: ["https://i.ibb.co/mVkCLZwF/4.jpg"] },
-            { nombre: "🍝 PASTAS", imgs: ["https://i.ibb.co/Rp5gK4Rh/5.jpg"] },
-            { nombre: "🥗 BOWLS Y ARROCES", imgs: ["https://i.ibb.co/KjPzyDC9/6.jpg", "https://i.ibb.co/XrkzwWQM/7.jpg"] },
-            { nombre: "🌊 DELICIAS DEL MAR", imgs: ["https://i.ibb.co/6RWmfxSM/8.jpg"] },
-            { nombre: "🥩 PLATOS CRIOLLOS", imgs: ["https://i.ibb.co/DDLfBv40/9.jpg"] },
-            { nombre: "➕ ADICIONALES", imgs: ["https://i.ibb.co/6JZY3LYv/adicionales.jpg"] }
+            {
+                cat: "🥢 ENTRADAS",
+                items: [
+                    {n: "AROS DE CEBOLLA Y CALAMAR", p: "15.000", d: "Crujientes aros acompañados de salsa de la casa."},
+                    {n: "KANIS CROCANTES", p: "20.000", d: "Palmitos de cangrejo apanados tipo snack."},
+                    {n: "NUGGETS DE POLLO", p: "10.000", d: "Porción de nuggets crocantes."},
+                    {n: "BANANA PANKO", p: "13.000", d: "Bocados de banano apanados al panko."}
+                ]
+            },
+            {
+                cat: "🍣 SUSHI ROLLS (ESPECIALIDADES)",
+                items: [
+                    {n: "DINAMITA", p: "24.000", d: "Kanikama especial y aguacate con tope de ajonjoli."},
+                    {n: "CALIFORNIA", p: "24.000", d: "Kanikama, pepino, aguacate y ajonjoli mix."},
+                    {n: "ALASKA SKIN", p: "26.000", d: "Piel de salmón tempura, aguacate con tope de plátano maduro y salsa mayonesa japonesa."},
+                    {n: "OJO DE TIGRE", p: "36.000", d: "Salmón, atún, palmito de cangrejo, aguacate y queso crema con tope de salsa dinamita."},
+                    {n: "EBI ESPECIAL", p: "36.000", d: "Langostino tempura, cebolla larga caramelizada, aguacate y langostino tempura en salsa Fuji."},
+                    {n: "EBI CROCANTE", p: "35.000", d: "Roll apanado relleno de palmito de cangrejo, queso crema y aguacate con tope de camaron tempura, salsa fuji y teriyaki."},
+                    {n: "ACEVICHADO", p: "35.000", d: "Langostino tempura y aguacate con tope ceviche de camarón."},
+                    {n: "PHILADELPHIA", p: "28.000", d: "Salmón fresco, queso crema y aguacate con tope de ajonjolí mix."},
+                    {n: "MAKI HOUSE ROLL", p: "35.000", d: "Aros calamar al panko, aguacate y queso crema con tope de zanahoria frita."},
+                    {n: "NAGAZAKI", p: "24.000", d: "Langostino tempura, pepino y queso crema laminado en aguacate y tope de ajonjoli."},
+                    {n: "CHICKEN", p: "26.000", d: "Pollo salteado, aguacate con tope de maduro y queso mozzarella flameado en salsa teriyaki."},
+                    {n: "CRIOLLO", p: "26.000", d: "Lomo de cerdo salteado y aguacate con tope plátano maduro, queso crema con salsa teriyaki."},
+                    {n: "VEGGIE", p: "20.000", d: "Zucchini, zanahoria, pimentón salteados en sésamo y aguacate con tope de ajonjolí y wuakame."},
+                    {n: "SAMAN ROLL", p: "39.000", d: "Salmón fresco, zucchini y aguacate con tope salmón, kanikama y ajonjolí."},
+                    {n: "ATLANTIC", p: "26.000", d: "Pescado blanco tempura, zucchini y queso crema con tope de aguacate mix."},
+                    {n: "MANGO", p: "26.000", d: "Salmón tempura, pepino y queso crema con tope de mango, aguacate y ajonjolí."},
+                    {n: "FENIX ROLL (SIN ARROZ)", p: "34.000", d: "Salmón, atún, kanikama especial, aguacate con tope de wuakame y ajonjolí."}
+                ]
+            },
+            {
+                cat: "🍜 RAMEN Y PASTAS",
+                items: [
+                    {n: "DRAMMEN (RAMEN)", p: "35.000", d: "Consomé japonés, pasta ramen, panceta de cerdo, pollo, alga nori y huevo macerado."},
+                    {n: "PASTA ORIENTAL POLLO/CERDO", p: "27.000", d: "Pasta de arroz, vegetales salteados, salsa soya y teriyaki."},
+                    {n: "PASTA DEL MAR", p: "39.000", d: "Mariscos salteados en salsa bechamel acompañados de patacones."}
+                ]
+            },
+            {
+                cat: "🥗 BOWLS Y ARROCES",
+                items: [
+                    {n: "BOWL TROPICAL", p: "18.000", d: "Base arroz, pollo, cerdo, vegetales y platanito maduro."},
+                    {n: "OCEAN BOWL", p: "25.000", d: "Mix de mariscos, mango, aguacate, pico de gallo y patacón."},
+                    {n: "ARROZ MARINERO", p: "40.000", d: "Mariscos salteados y vegetales."},
+                    {n: "ARROZ DE LA CASA", p: "25.000", d: "Pollo, cerdo, vegetales y salsa especial."}
+                ]
+            },
+            {
+                cat: "🌊 DELICIAS DEL MAR",
+                items: [
+                    {n: "CAZUELA MARINERA", p: "40.000", d: "Delicias del mar con arroz y estrellas de plátano."},
+                    {n: "COCTEL DE CAMARÓN", p: "26.000", d: "Torre de camarones en salsa especial."},
+                    {n: "SIERRA EN SALSA CRIOLLA", p: "50.000", d: "Sierra fresca con papa deluxe y arroz."}
+                ]
+            },
+            {
+                cat: "🥩 PLATOS CRIOLLOS",
+                items: [
+                    {n: "CHURRASCO", p: "34.000", d: "Lomo de res, papa a la francesa y ensalada mix."},
+                    {n: "PECHUGA CHAMPIÑONES", p: "35.000", d: "Pechuga en crema, arroz y papa francesa."},
+                    {n: "COSTILLAS BBQ", p: "30.000", d: "Costillas salteadas en salsa BBQ, papas y ensalada."},
+                    {n: "TRUCHA AL AJILLO", p: "36.000", d: "Trucha con patacón y arroz de la casa."},
+                    {n: "MOJARRA FRITA", p: "32.000", d: "Acompañada de patacón y arroz."},
+                    {n: "BAGRE EN COCO", p: "36.000", d: "En leche de coco o salsa criolla."}
+                ]
+            },
+            {
+                cat: "🥤 BEBIDAS",
+                items: [
+                    {n: "LIMONADAS ESPECIALES", p: "9.000", d: "Hierbabuena, Cereza, Sandía o Maracumango."},
+                    {n: "LIMONADA DE COCO", p: "10.000", d: "Cremosa y refrescante."},
+                    {n: "SODA ITALIANA", p: "10.000", d: "Frutos rojos."},
+                    {n: "CERVEZA CORONA", p: "7.000", d: "Botella fría."},
+                    {n: "MARGARITA / MOJITO", p: "15.000", d: "Coctelería clásica."}
+                ]
+            }
         ];
 
         const container = document.getElementById('menu-container');
+        
+        menuData.forEach((section, idx) => {
+            if(idx === 2) { 
+                const divider = document.createElement('div');
+                divider.className = "divider-img";
+                divider.innerHTML = `<span class="bg-black/70 px-6 py-2 maki-green italic font-black uppercase tracking-widest border border-green-500 italic">EXPERIENCIA MAKIROLL</span>`;
+                container.appendChild(divider);
+            }
 
-        menuData.forEach(cat => {
             const card = document.createElement('div');
             card.className = "category-card";
-            
-            const imagenesHtml = cat.imgs.map(url => `
-                <img src="${url}" 
-                     class="menu-img" 
-                     alt="${cat.nombre}" 
-                     loading="lazy">
-            `).join('');
-
             card.innerHTML = `
-                <div class="p-5 flex justify-between items-center cursor-pointer hover:bg-zinc-900 transition-all" 
-                     onclick="this.parentElement.classList.toggle('active')">
-                    <h2 class="text-lg font-black maki-green italic uppercase tracking-tighter">${cat.nombre}</h2>
-                    <span class="icon-plus text-2xl font-bold">+</span>
+                <div class="p-6 flex justify-between items-center cursor-pointer active:bg-zinc-900" onclick="this.parentElement.classList.toggle('active')">
+                    <h2 class="text-xl font-black maki-green tracking-tighter italic uppercase">${section.cat}</h2>
+                    <span class="icon-plus text-2xl maki-red font-bold transition-transform">+</span>
                 </div>
                 <div class="accordion-content">
-                    ${imagenesHtml}
+                    ${section.items.map(p => `
+                        <div class="mb-12 border-b border-zinc-900 pb-8 last:border-0">
+                            <div class="product-img-box">
+                                <span class="text-zinc-800 text-2xl font-black italic opacity-30 uppercase tracking-tighter italic">FOTO ${p.n}</span>
+                            </div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-lg font-bold text-white uppercase italic tracking-tighter leading-tight w-2/3 italic">${p.n}</h3>
+                                <span class="maki-green font-black text-lg">$${p.p}</span>
+                            </div>
+                            <p class="text-zinc-500 text-xs leading-relaxed">${p.d}</p>
+                        </div>
+                    `).join('')}
                 </div>
             `;
             container.appendChild(card);
