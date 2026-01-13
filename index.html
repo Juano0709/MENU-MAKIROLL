@@ -11,47 +11,73 @@
         .maki-red { color: #FF0000; }
         .main-bg { background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); }
         
+        /* Encabezado original recuperado */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=1800&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 2px solid #39FF14;
+        }
+
         .category-card {
-            background: rgba(20, 20, 20, 0.95);
+            background: rgba(20, 20, 20, 0.98);
             border: 1px solid #333; border-radius: 12px;
             margin-bottom: 1rem; overflow: hidden;
         }
 
-        /* Ajuste para calidad máxima y sin recortes */
+        /* Acordeón dinámico sin límites de altura */
         .accordion-content { 
-            max-height: 0; opacity: 0; overflow: hidden; 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            display: none; /* Cambiado a display none para asegurar que no ocupe espacio si está cerrado */
+            padding: 15px;
+            background: #000;
         }
         .active .accordion-content { 
-            max-height: 5000px; opacity: 1; padding: 10px; 
+            display: block; 
         }
         
+        /* Imágenes al 100% de su tamaño real sin recortes */
         .menu-img {
             width: 100%;
-            height: auto; /* Mantiene la proporción original del PDF */
+            height: auto; 
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             border-radius: 4px;
-            image-rendering: -webkit-optimize-contrast; /* Mejora nitidez en móviles */
+            /* Evita que la imagen se vea borrosa */
+            image-rendering: auto;
+            object-fit: contain; 
         }
 
-        .logo-img { width: 220px; height: auto; }
+        .logo-img { 
+            width: 200px; 
+            height: auto; 
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(0,0,0,0.8));
+        }
+
+        .icon-plus { transition: transform 0.3s ease; }
+        .active .icon-plus { transform: rotate(45deg); color: #FF0000; }
     </style>
 </head>
 <body class="main-bg">
 
-    <header class="py-10 flex flex-col items-center justify-center text-center">
+    <header class="hero">
         <img src="https://i.ibb.co/GvN3bYbN/logo.png" alt="Makiroll Logo" class="logo-img">
-        <p class="maki-green text-sm tracking-[0.3em] font-bold mt-2 uppercase">Líbano</p>
-        <p class="text-zinc-500 text-[10px] mt-1">Cra 6a#2-20 Jaramillo</p>
+        <div class="mt-4 border-t border-b border-green-500 py-1 px-4">
+            <p class="maki-green text-sm tracking-[0.4em] font-black uppercase">Líbano</p>
+        </div>
+        <p class="text-white text-[10px] mt-2 opacity-80 uppercase tracking-widest">Cra 6a#2-20 Jaramillo</p>
     </header>
 
-    <div class="max-w-3xl mx-auto px-4 pb-20" id="menu-container">
+    <div class="max-w-3xl mx-auto px-4 py-10" id="menu-container">
         </div>
 
-    <footer class="text-center py-8 border-t border-zinc-800 bg-black">
-        <p class="text-zinc-500 text-[10px] uppercase tracking-widest">Domicilios: $2.000</p>
-        <p class="maki-green text-xs mt-2 font-bold italic">© 2026 MAKIROLL</p>
+    <footer class="text-center py-10 bg-black border-t border-zinc-900">
+        <p class="text-zinc-500 text-[10px] uppercase tracking-[0.3em]">Domicilios: $2.000</p>
+        <p class="maki-green text-xs mt-3 font-bold italic">© 2026 MAKIROLL LÍBANO</p>
     </footer>
 
     <script>
@@ -77,15 +103,14 @@
                 <img src="${url}" 
                      class="menu-img" 
                      alt="${cat.nombre}" 
-                     loading="lazy"
-                     onerror="this.src='https://via.placeholder.com/800x1000?text=Cargando+Imagen...'">
+                     loading="lazy">
             `).join('');
 
             card.innerHTML = `
-                <div class="p-5 flex justify-between items-center cursor-pointer hover:bg-zinc-900 transition-colors" 
+                <div class="p-5 flex justify-between items-center cursor-pointer hover:bg-zinc-900" 
                      onclick="this.parentElement.classList.toggle('active')">
                     <h2 class="text-lg font-black maki-green italic uppercase tracking-tight">${cat.nombre}</h2>
-                    <span class="text-xl maki-red font-bold">+</span>
+                    <span class="icon-plus text-2xl font-bold">+</span>
                 </div>
                 <div class="accordion-content">
                     ${imagenesHtml}
